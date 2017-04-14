@@ -29,7 +29,7 @@ export class DetailsPage {
       this.birthday = editBirthday;
       this.isNew = false;
       this.action = 'Edit';
-      this.isoDate = this.birthday.date.toISOString().slice(0, 10);
+      this.isoDate = this.birthday.date;
     }
   }
   
@@ -42,8 +42,9 @@ export class DetailsPage {
       this.presentToast('Birthday required');
       return;
     }
+  
     this.birthday.date = new Date(this.isoDate);
-    
+
     if(this.isNew) {
       this.store.dispatch(this.birthdaysActions.addBirthday(this.birthday));
     }
